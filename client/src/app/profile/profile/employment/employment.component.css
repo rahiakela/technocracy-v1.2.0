@@ -1,0 +1,15 @@
+@import "../portfolio/portfolio.component.css";
+
+.input-control{
+  margin-top: -1.4em;
+}
+.date-control{
+  margin-top: -1.4em;
+}
+.text-area-control{
+  margin-top: -1.1em;
+}
+.check-box-label{
+  color: #007db8;
+  font-size: 15px;
+}

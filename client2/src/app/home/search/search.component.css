@@ -1,0 +1,7 @@
+@import "../../../styles.css";
+@import "../home.component.css";
+@import "../../core/header/header.component.css";
+
+div h4 {
+  font-weight: inherit;
+}

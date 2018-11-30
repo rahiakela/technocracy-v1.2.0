@@ -1,0 +1,39 @@
+swagger: "2.0"
+
+info:
+  version: "1.2.0"
+  title: "Technocracy REST API"
+  description: "This API list out all exposed REST paths of related to blog, question and user ptofile."
+  contact:
+    email: "editors@tecknocracy.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+
+schemes:
+  - "http"
+  - "https"
+
+host: "localhost:3000"
+basePath: "/api"
+
+tags:
+- name : "blog"
+  description: "The list of all blog related REST APIs"
+
+paths:
+  blog:
+    get:
+      tags:
+      - "blog"
+      summary: "Get all blog with published status"
+      description: "Returns a list containing all blog."
+      operationId: "getBlogs"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        description: "A list of Blog"
+        schema:
+          type: "array"

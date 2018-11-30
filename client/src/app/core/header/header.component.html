@@ -1,0 +1,240 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+
+    <!--navbar header section-->
+    <div class="navbar-header">
+
+      <!--common navbar toggle icon-->
+      <div id="main-menu">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!--logo-->
+      <div>
+        <a style="margin-left: -0.8em;" class="navbar-brand" href="https://www.tecknocracy.com/">
+          <img src="{{CLOUD_IMAGE_PATH}}/images/logo.png" class="img-responsive">
+        </a>
+      </div>
+
+      <!--navbar globe icon for xs-->
+      <button id="globe-xs" class="btn btn-default tech-btn-primary-globe-xs pull-right visible-xs-block">
+        <span class="badge"></span>
+        <a href="#"><i class="fa fa-globe fa-2x" style="color: aliceblue;"></i></a>
+      </button>
+
+      <!--navbar search form for xs-->
+      <form id="search-xs" class="form-inline center-block visible-xs-block" role="form" method="post" target="_blank">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search Blog Here" autofocus>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </div>
+      </form>
+    </div>
+
+    <!--navbar menu-->
+    <div id="nav-menu" class="collapse navbar-collapse">
+
+      <!--Menu option for small device-->
+      <ul class="nav navbar-nav visible-xs-block">
+        <li>
+          <a routerLink="/home">Home <span class="glyphicon glyphicon-home pull-right"></span></a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser() === ''">
+          <a routerLink="./question/q_show/list">Questions <i class="fa fa-question-circle pull-right" aria-hidden="true"></i></a>
+        </li>
+        <li *ngIf="getCurrentUser() === ''">
+          <a routerLink="/home">Blogs <i class="fa fa-file-text pull-right" aria-hidden="true"></i></a>
+        </li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/update" class="transition">
+            <span style="margin-right: 0.2rem;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            My Profile
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null" role="separator" class="divider"></li>
+        <li *ngIf="currentUser !== null && (currentUser.role === 'admin' || currentUser.role === 'author')">
+          <a routerLink="/blog/write/new" class="transition">
+            <span style="margin-top: 3px;" class="fa fa-edit pull-left transition" aria-hidden="true"></span>
+            Write Blog
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && (currentUser.role === 'admin' || currentUser.role === 'author')">
+          <a [routerLink]="['./blog/b_show', currentUser.profile._id]" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-file-text-o pull-left" aria-hidden="true"></i>
+            My Blog
+            <span class="badge pull-right">{{statics.totalBlog < 0 ? 0 : statics.totalBlog}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()" role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="./question/ask/new">Ask Question <span class="glyphicon glyphicon-question-sign pull-right"></span></a>
+        </li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="./question/q_show/pending" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-question-circle pull-left" aria-hidden="true"></i>
+            My Question
+            <span class="badge pull-right">{{statics.totalQuestion < 0 ? 0 : statics.totalQuestion}}</span>
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && currentUser.role === 'admin'" role="separator" class="divider"></li>
+        <li *ngIf="currentUser !== null && currentUser.role === 'admin'">
+          <a routerLink="./blog/show/all/pending" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-file-text-o pull-left" aria-hidden="true"></i>
+            Pending Blogs
+            <span class="badge pull-right">{{statics.totalPendingBlog < 0 ? 0 : statics.totalPendingBlog}}</span>
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && currentUser.role === 'admin'">
+          <a routerLink="./question/show/all/pending" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-question-circle pull-left" aria-hidden="true"></i>
+            Pending Questions
+            <span class="badge pull-right">{{statics.totalPendingQuestion < 0 ? 0 : statics.totalPendingQuestion}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()" role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/followers" class="transition">
+            <i class="fa fa-group" style="margin-right: 0.4rem;" aria-hidden="true"></i>
+            Followers
+            <span class="badge pull-right">{{statics.totalFollowers < 0 ? 0 : statics.totalFollowers}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/following" class="transition">
+            <i class="fa fa-group" style="margin-right: 0.4rem;" aria-hidden="true"></i>
+            Following
+            <span class="badge pull-right">{{statics.totalFollowing < 0 ? 0 : statics.totalFollowing}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()" role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/settings" class="transition">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            Settings
+          </a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()"><a (click)="signout()">Logout <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+        <li *ngIf="!getCurrentUser()"><a (click)="showSignup()">Sign-in <span class="fa fa-sign-in pull-right"></span></a></li>
+      </ul>
+
+      <!--navbar search form-->
+      <form id="search" class="form-inline center-block hidden-xs" role="form" method="post" target="_blank">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search Blog Here" autofocus>
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </div>
+      </form>
+      <!--navbar globe icon for sm,md and lg-->
+      <button id="globe" class="btn btn-default tech-btn-primary-globe pull-right hidden-xs">
+        <span class="badge"></span>
+        <i class="fa fa-globe fa-2x"></i>
+      </button>
+      <!--navbar user dropdown toggle icon for sm,md and lg-->
+      <button id="user" type="button" class="btn btn-default tech-btn-primary-user dropdown-toggle pull-right hidden-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i *ngIf="getCurrentUser() === ''" class="fa fa-user fa-2x" aria-hidden="true"></i>
+        <div *ngIf="getCurrentUser() !== ''">
+          <app-profile-xs-icon [user]="getLoggedInUser()"></app-profile-xs-icon>
+        </div>
+      </button>
+
+      <!--Menu option for small medium and large device-->
+      <ul class="dropdown-menu">
+        <li>
+          <a routerLink="/home">Home <span class="glyphicon glyphicon-home pull-right"></span></a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser() === ''">
+          <a routerLink="./question/q_show/list">Questions <i class="fa fa-question-circle pull-right" aria-hidden="true"></i></a>
+        </li>
+        <li *ngIf="getCurrentUser() === ''">
+          <a routerLink="/home">Blogs <i class="fa fa-file-text pull-right" aria-hidden="true"></i></a>
+        </li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/update" class="transition">
+            <span style="margin-right: 0.2rem;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            My Profile
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && (currentUser.role === 'admin' || currentUser.role === 'author')" role="separator" class="divider"></li>
+        <li *ngIf="currentUser !== null && (currentUser.role === 'admin' || currentUser.role === 'author')">
+          <a routerLink="/blog/write/new" class="transition">
+            <span style="margin-top: 3px;margin-right: 0.5em;" class="fa fa-edit pull-left transition" aria-hidden="true"></span>
+            Write Blog
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && (currentUser.role === 'admin' || currentUser.role === 'author')">
+          <a [routerLink]="['./blog/b_show', currentUser.profile._id]" class="transition">
+            <i style="margin-right: 1rem;" class="fa fa-file-text-o pull-left" aria-hidden="true"></i>
+            My Blog
+            <span class="badge pull-right">{{statics.totalBlog < 0 ? 0 : statics.totalBlog}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()" role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="./question/ask/new">Ask Question <span style="margin-top: 2px;margin-right: 0.5rem;" class="glyphicon glyphicon-pencil pull-left"></span></a>
+        </li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="./question/q_show/pending" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-question-circle pull-left" aria-hidden="true"></i>
+            My Question
+            <span class="badge pull-right">{{statics.totalQuestion < 0 ? 0 : statics.totalQuestion}}</span>
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && currentUser.role === 'admin'" role="separator" class="divider"></li>
+        <li *ngIf="currentUser !== null && currentUser.role === 'admin'">
+          <a routerLink="./blog/show/all/pending" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-file-text-o pull-left" aria-hidden="true"></i>
+            Pending Blogs
+            <span class="badge pull-right">{{statics.totalPendingBlog < 0 ? 0 : statics.totalPendingBlog}}</span>
+          </a>
+        </li>
+        <li *ngIf="currentUser !== null && currentUser.role === 'admin'">
+          <a routerLink="./question/show/all/pending" class="transition">
+            <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-question-circle pull-left" aria-hidden="true"></i>
+            Pending Questions
+            <span class="badge pull-right">{{statics.totalPendingQuestion < 0 ? 0 : statics.totalPendingQuestion}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()" role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/followers" class="transition">
+            <i class="fa fa-group" style="margin-right: 0.4rem;" aria-hidden="true"></i>
+            Followers
+            <span class="badge pull-right">{{statics.totalFollowers < 0 ? 0 : statics.totalFollowers}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/following" class="transition">
+            <i class="fa fa-group" style="margin-right: 0.4rem;" aria-hidden="true"></i>
+            Following
+            <span class="badge pull-right">{{statics.totalFollowing < 0 ? 0 : statics.totalFollowing}}</span>
+          </a>
+        </li>
+        <li *ngIf="getCurrentUser()" role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()">
+          <a routerLink="/profile/settings" class="transition">
+            <span style="margin-right: 0.2em;" class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            Settings
+          </a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li *ngIf="getCurrentUser()"><a (click)="signout()">Logout <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+        <li *ngIf="!getCurrentUser()"><a (click)="showSignup()">Sign-in <span class="fa fa-sign-in pull-right"></span></a></li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+
+

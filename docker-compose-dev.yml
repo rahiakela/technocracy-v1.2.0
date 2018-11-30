@@ -1,0 +1,31 @@
+version: '3.3' #specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  technocracy-database: # name of the mongodb database service
+    image: mongo # specify image to build container from
+    ports:
+      - "27017:27017" # specify port forwarding
+    # volumes: # run database from dump file(see:https://stackoverflow.com/questions/35400740/how-to-set-docker-mongo-data-volume)
+      # - /mongodb/data/db:/data/db:rw
+    # command: mongod --auth
+    container_name: "technocracy-database" # specify container name
+  # mongo-seed: # see-https://stackoverflow.com/questions/31210973/how-do-i-seed-a-mongo-database-using-docker-compose
+    # build: mongodb
+    # depends_on:
+      # - technocracy-database
+  technocracy-client: # name of the front-end client service
+    build: ../client # specify the directory of the Dockerfile
+    ports:
+      - "80:80" # specify port forwarding
+    container_name: "technocracy-client" # specify container name
+  technocracy-server: # name of the back-end server service
+    build: ../server # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000" # specify ports forwarding
+    container_name: "technocracy-server" # specify container name
+    depends_on:
+      - technocracy-database # make sure the server run after the database up
+    links:
+      - technocracy-database # link this service to the database service
+  

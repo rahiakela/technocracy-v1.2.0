@@ -1,0 +1,109 @@
+@import "../../../styles.css";
+
+.tech-table-header {
+  color: whitesmoke;
+  background-color: steelblue;
+  font-size: 15px;
+}
+
+td, th {
+  padding: 5px;
+}
+td {
+  font-size: 14px;
+  font-style: inherit;
+  padding: 10px 10px 0px 5px;
+}
+
+.noDataAvailable {
+  margin-left: 5em;
+  padding-top: 10px;
+}
+
+.dropdown-menu {
+  margin-left: -10.1em;
+  margin-top: -2em;
+  width: 160px;
+}
+.dropdown-menu > li > a {
+  color: #007db8;
+}
+.dropdown-menu > li > a:hover  {
+  background-color: #007db8;
+  color: white;
+}
+.btn-group > .btn:first-child {
+  margin-left: -15px;
+}
+
+.open ul.dropdown-menu {
+  display: block;
+}
+
+@media(min-width: 375px){
+  .blog-select-menu {
+    margin-right: 8em;
+    width: 90px;
+    height: 28px;
+    color: #007db8;
+    font-size: 14px;
+    font-weight: 200;
+    overflow: hidden;
+    background: url('http://s24.postimg.org/lyhytocf5/dropdown.png') no-repeat right #FEFEFE;
+    border: #d9edf7 1px solid;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+    box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+  }
+}
+@media(min-width: 1200px){
+  .blog-select-menu {
+    margin-right: -0.5em;
+    width: 170px;
+    height: 28px;
+    color: #007db8;
+    font-size: 14px;
+    font-weight: 200;
+    overflow: hidden;
+    background: url('http://s24.postimg.org/lyhytocf5/dropdown.png') no-repeat right #FEFEFE;
+    border: #d9edf7 1px solid;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+    box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+  }
+}
+
+/*.blog-select-menu select {
+  background: transparent;
+  width: 170px;
+  color: cadetblue;
+  font-size: 14px;
+  font-weight: 200;
+  border: 0;
+  border-radius: 0;
+  height: 28px;
+  -webkit-appearance: none;
+}
+@media(min-width: 760px){
+  .blog-select-menu select {
+    background: transparent;
+    width: 90px;
+    color: cadetblue;
+    font-size: 14px;
+    font-weight: 200;
+    border: 0;
+    border-radius: 0;
+    height: 28px;
+    -webkit-appearance: none;
+  }
+}*/
+.blog-select-menu select:focus {
+  outline: none;
+}
+
+a {
+  color: cadetblue;
+  text-decoration: none;
+}

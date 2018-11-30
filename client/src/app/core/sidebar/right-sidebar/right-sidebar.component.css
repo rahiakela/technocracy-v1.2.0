@@ -1,0 +1,12 @@
+@import "../../../../styles.css";
+@import "../left-sidebar/left-sidebar.component.css";
+
+#right-sidebar{
+  width: 15.50em;
+  margin-left: -1rem;
+}
+
+ul .list-group .right-sidebar affix-top{
+  width: 15.50em;
+  margin-left: -1rem;
+}

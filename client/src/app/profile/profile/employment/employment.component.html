@@ -1,0 +1,97 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 align="center">Employment Snapshot</h4>
+    </div>
+  </div>
+  <hr>
+
+  <form name="employmentForm" role="form" novalidate>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <fieldset>
+          <legend>Company</legend>
+          <input type="text" class="form-control input-control" id="company" name="company" placeholder="Enter your company name">
+        </fieldset>
+      </div>
+
+      <div class="col-md-6">
+        <fieldset>
+          <legend>Designation</legend>
+          <select class="form-control select-control" id="designation" name="designation">
+            <option value="">Select your designation</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Sr. Software Engineer">Sr. Software Engineer</option>
+          </select>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <fieldset>
+          <legend>Industries</legend>
+          <select class="form-control select-control" id="industry" name="industry">
+            <option value="">Select your industry</option>
+            <option value="IT/Computer Software">IT/Computer Software</option>
+            <option value="IT/Computer Hardware">IT/Computer Hardware</option>
+          </select>
+        </fieldset>
+      </div>
+
+      <div class="col-md-6">
+        <fieldset>
+          <legend>Roles</legend>
+          <select class="form-control select-control" id="role" name="role">
+            <option value="">Select your role</option>
+            <option value="Software Programmer">Software Programmer</option>
+            <option value="Software Support">Software Support</option>
+          </select>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6">
+        <fieldset>
+          <legend>From</legend>
+          <input type="date" class="form-control date-control" id="fromDate" name="fromDate">
+        </fieldset>
+      </div>
+
+      <div class="col-md-6">
+        <fieldset>
+          <legend>To</legend>
+          <input type="date" class="form-control date-control" id="toDate" name="toDate">
+        </fieldset>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group row">
+      <div class="col-md-12">
+        <fieldset>
+          <legend>Achievements</legend>
+          <textarea class="text-area-control" name="achievements" id="achievements" placeholder="Please mention your achievements..." rows="2" cols="60"></textarea>
+        </fieldset>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-group row">
+      <div class="col-md-6 check-box-label">
+        <input type="checkbox" id="isCurrentEmployer" name="isCurrentEmployer">Current Employer ?
+      </div>
+      <div class="col-md-2 col-md-offset-2" style="padding-right: 0em;">
+        <button type="button" class="btn btn-block btn-primary">Save</button>
+      </div>
+      <div class="col-md-2" style="padding-left: 0.1em;">
+        <button type="button" class="btn btn-block btn-secondary">Cancel</button>
+      </div>
+
+    </div>
+  </form>
+</div>

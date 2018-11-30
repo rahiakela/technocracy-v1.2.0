@@ -1,0 +1,170 @@
+<!--Header-navigation section-->
+<app-header [statics]="statics" (loading)="loading = $event" (results)="search($event)"></app-header>
+
+<!--body section-->
+<div id="tech-main-body" class="container">
+  <div class="row">
+
+    <!--body's left side section-->
+    <div id="tech-left-sidebar" class="col-md-3 hidden-sm hidden-xs" data-spy="affix" data-offset-top="0">
+      <app-left-sidebar [blogList]="blogs" [statics]="statics"></app-left-sidebar>
+    </div>
+
+    <!--body's middle section-->
+    <div id="tech-main-section" class="col-sm-12 col-md-6">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!--body's right side section-->
+    <div id="tech-right-sidebar" class="col-md-3 hidden-sm hidden-xs">
+      <app-right-sidebar [questionList]="questions"></app-right-sidebar>
+    </div>
+
+  </div>
+
+  <!--Login Pop-up Box Component-->
+  <app-auth-modal #modalLogin>
+    <div class="app-modal-header">
+      <h3 class="text-center"><i class="fa fa-sign-in"></i> Log in</h3>
+    </div>
+    <div class="app-modal-body">
+
+      <div *ngIf="errorMessage != ''">
+        <div class="alert alert-danger">
+          {{errorMessage}}
+        </div>
+      </div>
+
+      <form [formGroup]="loginForm" #formDir="ngForm" role="form" novalidate>
+
+        <div class="form-group has-feedback has-feedback-left"
+             [ngClass]="{
+              'has-danger': loginEmail.invalid && (loginEmail.dirty || loginEmail.touched),
+              'has-success': loginEmail.valid && (loginEmail.dirty || loginEmail.touched)
+           }"
+        >
+          <input class="form-control" type="email" formControlName="loginEmail"  placeholder="Email" required autofocus>
+          <!--<span class="input-group-addon">-->
+            <i id="login-fa-at-icon" class="fa fa-at form-control-feedback form-icon"></i>
+          <!--</span>-->
+          <div id="email-error-message" class="form-control-feedback" *ngIf="loginEmail.errors && (loginEmail.dirty || loginEmail.touched)">
+            <p *ngIf="loginEmail.errors.required">Please provide your email id</p>
+            <p *ngIf="loginEmail.errors.pattern">The email must contain @ character</p>
+          </div>
+        </div>
+
+        <div class="form-group has-feedback has-feedback-left"
+             [ngClass]="{
+              'has-danger': loginPassword.invalid && (loginPassword.dirty || loginPassword.touched),
+              'has-success': loginPassword.valid && (loginPassword.dirty || loginPassword.touched)
+           }"
+        >
+          <input class="form-control" type="password" id="loginPassword" formControlName="loginPassword" placeholder="Password" required>
+          <i id="login-fa-key-icon" class="fa fa-key form-control-feedback form-icon"></i>
+          <i id="login-fa-eye-icon" class="fa fa-eye form-icon pull-right" onclick="loginPassword.type == 'text' ? loginPassword.type = 'password' : loginPassword.type = 'text'"></i>
+          <div id="password-error-message" class="form-control-feedback" *ngIf="loginPassword.errors && (loginPassword.dirty || loginPassword.touched)">
+            <p *ngIf="loginPassword.errors.required">Please provide your password</p>
+          </div>
+        </div>
+
+        <button type="button" [disabled]="!loginEmail.valid || !loginPassword.valid" class="btn btn-block btn-success" (click)="login()">Log in</button>
+        <br/>
+        <p class="text-center text-muted">
+          <small>Don't have an account yet? <button type="button" class="btn btn-link" style="padding-left: 0px;padding-bottom: 0px; padding-top: 0px;color: blue;"
+                                                    (click)="modalSignup.show();modalLogin.hide();">Sign up</button></small>
+        </p>
+
+        <div class="signup-or-separator">
+          <h6 class="text-center">OR</h6>
+        </div>
+      </form>
+
+      <button class="btn btn-block btn-google-plus" (click)="authenticate('google')">
+        <i class="fa fa-google-plus"></i> Sign in with Google
+      </button>
+      <button class="btn btn-block btn-facebook" (click)="authenticate('facebook')">
+        <i class="fa fa-facebook"></i> Sign in with Facebook
+      </button>
+      <button class="btn btn-block btn-linkedin" (click)="authenticate('linkedin')">
+        <i class="fa fa-linkedin"></i> Sign in with LinkedIn
+      </button>
+    </div>
+  </app-auth-modal>
+
+  <!--Signup Pop-up Box Component-->
+  <app-auth-modal #modalSignup>
+    <div class="app-modal-header">
+      <h4 class="text-center"><i class="fa fa-user-plus"></i> Sign up</h4>
+    </div>
+    <div class="app-modal-body">
+
+      <div *ngIf="errorMessage != ''">
+        <div class="alert alert-danger">
+          {{errorMessage}}
+        </div>
+      </div>
+
+      <form novalidate [formGroup]="signupForm" #formDir="ngForm">
+
+        <div class="form-group has-feedback has-feedback-left"
+             [ngClass]="{
+          'has-danger': email.invalid && (email.dirty || email.touched),
+          'has-success': email.valid && (email.dirty || email.touched)
+        }"
+        >
+          <input class="form-control" type="email" formControlName="email" placeholder="Email" required>
+          <i id="signup-fa-at-icon" class="fa fa-at form-control-feedback form-icon"></i>
+          <div id="email-errors-message" class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+            <p *ngIf="email.errors.required">Please provide your email id</p>
+            <p *ngIf="email.errors.pattern">The email must contain @ character</p>
+          </div>
+        </div>
+
+        <div class="form-group has-feedback has-feedback-left"
+             [ngClass]="{
+           'has-danger': password.invalid && (password.dirty || password.touched),
+           'has-success': password.valid && (password.dirty || password.touched)
+         }"
+        >
+          <input class="form-control" id="signupPassword" type="password" formControlName="password" placeholder="Password" required>
+          <i id="signup-fa-key-icon" class="fa fa-key form-control-feedback form-icon"></i>
+          <i id="signup-fa-eye-icon" class="fa fa-eye form-icon pull-right" onclick="signupPassword.type == 'text' ? signupPassword.type = 'password' : signupPassword.type = 'text'"></i>
+          <div id="password-errors-message" class="form-control-feedback" *ngIf="password.errors && (password.dirty || password.touched)">
+            <p *ngIf="password.errors.required">Please provide your password</p>
+            <p *ngIf="password.errors.minlength">
+              Password must be 8 chars long, need {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} more.
+            </p>
+          </div>
+        </div>
+
+        <div class="form-group has-feedback has-feedback-left"
+             [ngClass]="{
+          'has-danger': userName.invalid && (userName.dirty || userName.touched),
+          'has-success': userName.valid && (userName.dirty || userName.touched)
+        }"
+        >
+          <input class="form-control" type="text" formControlName="userName" placeholder="Username" required>
+          <i id="signup-fa-user-icon" class="fa fa-user form-control-feedback form-icon"></i>
+          <div id="username-error-message" class="form-control-feedback" *ngIf="userName.errors && (userName.dirty || userName.touched)">
+            <p *ngIf="userName.errors.required">Please choose your username</p>
+            <p *ngIf="userName.errors.minlength">
+              Username must be 4 chars long, need {{userName.errors.minlength.requiredLength - userName.errors.minlength.actualLength}} more
+            </p>
+          </div>
+        </div>
+
+        <div class="g-recaptcha" style="transform:scale(0.81);-webkit-transform:scale(0.81);transform-origin:0 0;-webkit-transform-origin:0 0;">
+          <re-captcha (resolved)="resolved($event)"></re-captcha>
+        </div>
+
+        <p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
+
+        <button type="button" id="re-captcha-signup" disabled class="btn btn-block btn-primary" (click)="signup();modalSignup.hide();">Sign up</button>
+        <br/>
+
+        <p class="text-center text-muted"><small>Already have an account? <button type="button" class="btn btn-link" (click)="modalLogin.show();modalSignup.hide();" style="padding-left: 0px;padding-bottom: 0px; padding-top: 0px;color: blue;"> Log in now</button></small></p>
+      </form>
+    </div>
+  </app-auth-modal>
+
+</div>

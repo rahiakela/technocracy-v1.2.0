@@ -1,0 +1,58 @@
+<!--blog form edit-view-->
+<div class="card">
+  <div class="card-header" style="color: #007db8;">Edit Blog</div>
+  <div class="container-fluid" style="padding-top: 10px;">
+    <div class="row">
+
+      <div class="col-md-12" *ngIf="successMessage !== ''">
+        <div class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{successMessage}}
+        </div>
+      </div>
+
+      <div class="col-md-12" *ngIf="errorMessage != ''">
+        <div class="alert alert-danger">
+          {{errorMessage}}
+        </div>
+      </div>
+
+    </div>
+
+    <form class="form-horizontal" #captchaProtectedForm="ngForm" name="questionForm" novalidate>
+      <div class="form-group">
+        <div class="col-sm-12 col-md-12">
+          <div class="input-group">
+            <div class="input-group-addon">Title:</div>
+            <input type="text" class="form-control" id="title" name="title" [(ngModel)]="blogModel.title" placeholder="specify your blog's title here...">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12 col-md-12">
+          <app-tinymce-editor [elementId]="'b-editor'" [type]="'new-update-blog'" [editorValue]="blogModel.content" (onEditorContentChange)="blogKeyupHandler($event)"></app-tinymce-editor>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12 col-md-12">
+          <div class="input-group">
+            <div class="input-group-addon">Tags:</div>
+            <input type="text" class="form-control" id="tags" name="tag" [(ngModel)]="blogModel.tag" placeholder="specify at least one tag such as java, python and scala etc..">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-9 col-md-9">
+          <div>
+            <button type="button" class="btn btn-primary" (click)="editBlog(blogModel)">Edit Your Blog</button>
+            <button *ngIf="blog.status === 'draft'" type="button" class="btn btn-primary" (click)="postBlog(blogModel.blogId)">Post Your Blog</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+

@@ -1,0 +1,61 @@
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="10"
+  [infiniteScrollUpDistance]="10"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScrollDown()"
+  (scrolledUp)="onScrollUp()">
+
+  <div *ngIf="blogList.length > 0; else searchResultMessageTemplate">
+    <div class="card" *ngFor="let blog of blogList">
+      <div class="card-header" style="height: 13rem;">
+        <a [routerLink]="['/blog', blog._id]" style="text-decoration: none;">
+          <div style="color: #007db8;">
+            <div>
+              <h4>{{blog.title}}</h4>
+            </div>
+            <div>
+              <app-profile-small-icon [user]="blog.profile.user"></app-profile-small-icon>
+              <div class="tech-inline-profile-box">
+                {{blog.profile.name}}<small>-{{blog.profile.designation}}@{{blog.profile.company}}</small><br>
+                <small id="skills">{{showSkillsHashTag(blog.profile.skills)}}</small>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="card-block">
+        <div [innerHTML]="blog.content.substring(0,300) | safeHtml"></div>
+        <a [routerLink]="['/blog', blog._id]" style="color: #007db8;">Continue reading→</a>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #searchResultMessageTemplate>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row" style="margin-left: -3em;">
+          <div class="col-md-12">
+            <p>No results found for your search term!</p>
+            <p style="font-size: 15px;">Please mention specific search term like java, python etc.</p>
+          </div>
+        </div>
+        <div class="row" style="margin-left: -3em;">
+          <div class="col-md-6">
+            <a routerLink="/home">Home→</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4 align="center">Portfolio Snapshot</h4>
+  </div>
+</div>
+<hr>
+<form class="form-inline" name="loginForm" role="form" novalidate>
+
+  <div class="form-group row">
+    <label for="name" class="col-md-2 col-form-label">Your Name</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+    </div>
+    <label for="dob" class="col-md-2 col-form-label">DOB</label>
+    <div class="col-md-4">
+      <input type="date" class="form-control" id="dob" name="dob">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <select class="form-control" id="gender" name="gender">
+      <option value="">Select your gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <label for="phone">Phone</label>
+    <input type="number" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" aria-describedby="phoneHelp">
+    <small id="phoneHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email address" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
+    <label for="mobile">Mobile</label>
+    <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" aria-describedby="mobileHelp">
+    <small id="mobileHelp" class="form-text text-muted">We'll never share your phone with anyone else.</small>
+  </div>
+
+  <hr>
+
+  <div class="form-group">
+    <label for="description">About You</label>
+    <textarea name="description" id="description" placeholder="Please describe something about you..." rows="2" cols="45"></textarea>
+  </div>
+
+  <hr>
+  <h5>Social Presence</h5>
+  <hr>
+
+  <div class="form-group">
+    <label for="facebook">Facebook</label>
+    <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Enter your Facebook profile link">
+    <label for="google">Google</label>
+    <input type="text" class="form-control" id="google" name="google" placeholder="Enter your Google profile link">
+  </div>
+
+  <div class="form-group">
+    <label for="twitter">Twitter</label>
+    <input type="text" class="form-control" id="twitter" name="twitter" placeholder="Enter your Twitter profile link">
+    <label for="linkedIn">LinkedIn</label>
+    <input type="text" class="form-control" id="linkedIn" name="linkedIn" placeholder="Enter your LinkedIn profile link">
+  </div>
+
+  <hr>
+  <h5>Location Info</h5>
+  <hr>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address">
+  </div>
+
+  <div class="form-group">
+    <fieldset>
+      <legend>Country</legend>
+      <select class="form-control" id="country" name="country">
+        <option value="">Select your country</option>
+        <option value="india">India</option>
+        <option value="us">US</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <legend>City</legend>
+      <select class="form-control" id="city" name="city">
+        <option value="">Select your city</option>
+        <option value="New Delhi">New Delhi</option>
+        <option value="Noida">Noida</option>
+      </select>
+    </fieldset>
+  </div>
+
+  <div class="form-group">
+    <button type="button" class="btn btn-block btn-success">Save</button>
+    <button type="button" class="btn btn-block btn-success">Cancel</button>
+  </div>
+
+</form>

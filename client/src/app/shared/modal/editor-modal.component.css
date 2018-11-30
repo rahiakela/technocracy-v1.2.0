@@ -1,0 +1,26 @@
+@import "../../../styles.css";
+
+.write-comment-dialog-box{
+  margin-top: 6rem;
+  width: 32em;
+  opacity: 1;
+}
+@media(max-width: 34em) {
+  .write-comment-dialog-box{
+    margin-top: 10rem;
+    width: 95%;
+    opacity: 1;
+  }
+}
+
+.modal-body {
+  padding-bottom: 0em;
+  margin-bottom: -1em;
+}
+
+@media(max-width: 34em) {
+  .modal-body {
+    padding-bottom: 0em;
+    margin-bottom: -2.5em;
+  }
+}

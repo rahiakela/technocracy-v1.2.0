@@ -1,0 +1,11 @@
+@import "../../../../styles.css";
+
+div>h4 {
+  margin-left: 10em;
+  margin-right: -5em;
+  color: #a8c4d2;
+}
+hr{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

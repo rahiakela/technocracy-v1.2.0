@@ -1,0 +1,68 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-image-upload">
+        <div class="circle">
+          <!-- User Profile Image -->
+          <img class="profile-pic" src="{{getUserImage() !== '' ? getUserImage() : 'https://s3.amazonaws.com/tecknocracy/images/profiles/no-profile.png'}}" height="150" width="130">
+        </div>
+        <div class="p-image">
+          Update image<i (click)="chooseFile($event)" class="fa fa-camera upload-button pull-right"></i>
+          <input class="file-upload" type="file" (change)="uploadImage($event.target.files)" accept="image/*"/>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h3><strong>Rahi Akela</strong></h3>
+      <h6><strong>New Delhi,India * member since July 2017</strong></h6>
+      <p class="profile-description">
+        Just in case if row is too complex, what I do is, keep first row hidden with required structure, make a clone and modify text and insert after first row, this way if you fetch data from ajax response your table will be created, remember clone it outside the loop, then use it to modify content inside loop
+      </p>
+      <div>
+        <h6><strong>Java&nbsp;&nbsp;Python&nbsp;&nbsp;Big Data&nbsp;&nbsp;Data Science&nbsp;&nbsp;Machine Learning&nbsp;&nbsp;Scala&nbsp;&nbsp;Spark&nbsp;&nbsp;</strong></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+
+  <div class="row p-t-md">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#employment">Employment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#experience">Experience</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#skills">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#education">Education</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="portfolio">
+          <app-portfolio></app-portfolio>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in" id="employment">
+         <!-- <app-employment></app-employment>-->
+        </div>
+        <div role="tabpanel" class="tab-pane fade in" id="experience">
+          <app-experience></app-experience>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in" id="skills">
+          <app-skills></app-skills>
+        </div>
+        <div role="tabpanel" class="tab-pane fade in" id="education">
+          <app-education></app-education>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

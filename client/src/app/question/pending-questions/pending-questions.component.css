@@ -1,0 +1,8 @@
+@import "../../../styles.css";
+@import "../question-list/question-list.component.css";
+
+a {
+  color: cadetblue;
+  text-decoration: none;
+}
+

@@ -1,0 +1,54 @@
+<div class="card">
+
+  <div class="row">
+    <div class="col-md-12" *ngIf="successMessage !== ''">
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{successMessage}}
+      </div>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <div style="color: #007db8;">
+      <div>
+        <h4>{{blog.title}}</h4>
+      </div>
+      <div>
+        <app-profile-small-icon [user]="blog.profile.user"></app-profile-small-icon>
+        <div class="tech-inline-profile-box">
+          {{blog.profile.name}}<small>-{{blog.profile.designation}}@{{blog.profile.company}}</small><br>
+          <small id="skills">{{showSkillsHashTag(blog.profile.skills)}}</small>
+        </div>
+
+        <div class="tech-inline-share-box">
+          <app-share
+            [url]="'https://www.tecknocracy.com/#/blog/'+blog._id"
+            [title]="blog.title"
+          >
+          </app-share>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card-block">
+    <div [innerHTML]="blog.content | safeHtml"></div>
+
+    <!--Blogger's Profile and skills-->
+    <app-profile [blog]="blog"></app-profile>
+
+  </div>
+
+  <!--Like and Comments section-->
+  <div class="card-footer">
+    <div style="margin: -5px 13px 5px;">
+      <button type="button" class="btn btn-primary" (click)="modifyBlog(blog._id, 'published')">Publish Blog</button>
+    </div>
+  </div>
+
+</div>
+

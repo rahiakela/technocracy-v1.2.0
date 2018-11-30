@@ -1,0 +1,152 @@
+@import "../styles.css";
+
+#tech-main-body {
+  margin-top: 5.2rem;
+  font-style: inherit;
+  font-size: 1.25em;
+}
+@media(max-width: 34em) {
+  #tech-main-body {
+    margin-top: 5.69em;
+  }
+}
+.tech-container-primary {
+  padding-left: 0px;
+  padding-right: 0px;
+  z-index: 1000;
+  overflow: hidden;
+
+  width: 100%;
+  backface-visibility: hidden;
+  will-change: overflow;
+}
+
+/*https://stackoverflow.com/questions/15590803/how-to-implement-fixed-sidebar-correctly*/
+div#tech-left-sidebar {
+  padding-right: 0.25em;
+  /*position:fixed;*/
+  /*max-width: 300px;
+  margin-left: -160px;
+  max-height: 100%;*/
+  /*
+  max-width: 24%;
+  max-height: 100%;
+  padding-left: 10px;
+  */
+  /*top: 54px;*/
+  /*padding-right: 0px;
+  padding-bottom: 50px;*/
+  /*overflow:auto;
+  z-index: 1;*/
+}
+
+#tech-main-section{
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  /*margin-top: 55px;
+  max-width: 650px;
+  margin-left: 126px;*/
+  /*margin-top: 3.75em;
+  margin-left: -1em;*/
+  position: relative;
+  z-index: 1;
+}
+
+#tech-ads-sidebar{
+  position:relative;
+  /*padding-left: 0em;*/
+  /*max-width: 250px;*/
+}
+
+.tech-absolute-center{
+  margin-left: 200px;
+  /*position: absolute;*/
+  top: 0; left: 0; bottom: 0; right: 0;
+  width: 100%;
+  min-width: 1200px;
+  max-width: 1200px;
+  padding: 0px;
+}
+
+/*Login/Signup Styling*/
+#login-fa-key-icon{
+  position: relative;
+  margin-left: 0em;
+  margin-top: -1.93em;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 3px 0px 0px 3px;
+}
+i#login-fa-eye-icon{
+  margin-top: -1.5em;
+  margin-right: 0.25em;
+}
+#login-fa-at-icon{
+  position: relative;
+  margin-left: 0em;
+  margin-top: -1.93em;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 3px 0px 0px 3px;
+}
+i#signup-fa-at-icon{
+  position: relative;
+  margin-left: 0em;
+  margin-top: -1.93em;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 3px 0px 0px 3px;
+}
+i#signup-fa-key-icon{
+  position: relative;
+  margin-left: 0em;
+  margin-top: -1.93em;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 3px 0px 0px 3px;
+}
+i#signup-fa-eye-icon{
+  margin-top: -1.5em;
+  margin-right: 0.25em;
+}
+i#signup-fa-user-icon{
+  position: relative;
+  margin-left: 0em;
+  margin-top: -1.91em;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 3px 0px 0px 3px;
+}
+#email-error-message {
+  margin-top: 2.2em;
+  font-size: 10px;
+  width: 18rem;
+  color: indianred;
+}
+#password-error-message {
+  margin-top: 2.2em;
+  font-size: 10px;
+  width: 18rem;
+  color: indianred;
+}
+#email-errors-message {
+  margin-top: 2.2em;
+  font-size: 10px;
+  width: 18rem;
+  color: indianred;
+}
+#password-errors-message {
+  margin-top: 2.2em;
+  font-size: 10px;
+  width: 21rem;
+  color: indianred;
+}
+#username-error-message {
+  margin-top: 2.2em;
+  font-size: 10px;
+  width: 21rem;
+  color: indianred;
+}
+

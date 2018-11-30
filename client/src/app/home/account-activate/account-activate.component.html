@@ -1,0 +1,102 @@
+<div class="jumbotron" *ngIf="ACC_ACTIVATE_VIEW">
+  <div class="container">
+    <div class="row" style="margin-left: -3em;">
+      <div class="col-md-12">
+        <p>You're almost done! We sent an activation mail to {{currentMailId}}.</p>
+        <p>Please follow the instructions in the mail to activate your account.</p><br>
+        <p>If it doesn't arrive, check your spam folder.</p><br>
+      </div>
+    </div>
+    <div class="row" style="margin-left: -3em;">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" (click)="resendActivateAccountMail()">
+          <i class="fa fa-envelope"></i> Resend Activation Email
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn" (click)="showMailUpdateView()">
+          <i class="fa fa-pencil"></i> Change Email Address
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" *ngIf="ACC_RESENT_VIEW">
+  <div class="container">
+    <div class="row" style="margin-left: -3em;">
+      <div class="col-md-12">
+        <p>Please check your mail account! We have sent again an activation mail to {{currentMailId}}.</p>
+        <p>Please follow the instructions in the mail to activate your account.</p><br>
+        <p>If it doesn't arrive, check your spam folder.</p><br>
+      </div>
+    </div>
+    <div class="row" style="margin-left: -3em;">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" (click)="resendActivateAccountMail()">
+          <i class="fa fa-envelope"></i> Resend Activation Email
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn" (click)="showMailUpdateView()">
+          <i class="fa fa-pencil"></i> Change Email Address
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" *ngIf="ACC_TOKEN_EXPIRE_VIEW">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p>It seems that the account activation code has been expired.</p><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary" (click)="resendActivateAccountMail()">
+          <i class="fa fa-envelope"></i> Resend Activation Email
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn" (click)="showMailUpdateView()">
+          <i class="fa fa-pencil"></i> Change Email Address
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" *ngIf="ACC_UPDATE_VIEW" style="padding-right: 20px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" style="margin-left: -13px;">
+        <p>Provide a new address and we'll resend to you an account activation email.</p><br>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <form #form="ngForm" name="accountActivateForm" role="form" novalidate>
+            <div class="form-group has-feedback has-feedback-left">
+              <input class="form-control" type="text" name="email" ngModel #email="ngModel" placeholder="Enter your email here" required autofocus>
+              <i id="email-icon" class="fa fa-at form-control-feedback"></i>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="updateMailId(form)">Update Email Address</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron" *ngIf="ACC_WELCOME_VIEW">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Welcome to Technocracy Forum!</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+

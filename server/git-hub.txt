@@ -1,0 +1,41 @@
+1- clone Github repository on the command line
+>>git clone <remote rep location URL>
+
+2- go to repo folder
+>>cd <repo_folder>
+
+3- switch to required branch
+>> git checkout -b <branch_name>
+
+4- make required files or copy paste other files
+
+5- add to modified files to repo branch
+>> git add .
+
+6- commit all changes to repo branch
+>> git commit -m "comment"
+
+7- pushh all chnages to Github remote repo
+>> git push origin <branch name>
+
+Example:
+
+>>git clone https://github.com/rahiakela/nodejs-application.git
+>>cd nodejs-application
+>>git checkout -b loc8r
+>>[copy paste other files]
+>>git add .
+>>git commit -m "adding files"
+>>git push origin loc8r
+Username for 'https://github.com': rahiakela
+Password for 'https://rahiakela@github.com':
+Counting objects: 9, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 849 bytes | 0 bytes/s, done.
+Total 9 (delta 6), reused 0 (delta 0)
+remote: Resolving deltas: 100% (6/6), completed with 6 local objects.
+To https://github.com/rahiakela/nodejs-application.git
+   001a714..0cceef0  loc8r -> loc8r
+   
+Note: repeat step-2 to step-7 for future update.

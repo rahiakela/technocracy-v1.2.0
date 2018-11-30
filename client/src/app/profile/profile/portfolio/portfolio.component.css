@@ -1,0 +1,45 @@
+@import "../../../../styles.css";
+
+div>h4 {
+  margin-left: 10em;
+  margin-right: -5em;
+  color: #a8c4d2;
+}
+hr{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.form-group{
+  margin-top: 0.25em;
+  margin-left: 0em;
+  margin-right: 0em;
+}
+.col-form-label{
+  color: #007db8;
+  font-size: 12px;
+  margin-top: .7em;
+  /*padding: 0px 0px 0px 32px;*/
+}
+.col-md-4{
+  padding-left: 0em;
+}
+small{
+  font-size: 8px;
+  color: cadetblue;
+}
+h5{
+  color: #a8c4d2;
+  margin-left: 1em;
+}
+.form-right-aligned{
+  padding-left: 0em;
+}
+legend {
+  color: #007db8;
+  font-size: 12px;
+  font-weight: bold;
+}
+.select-control{
+  margin-top: -1.4em;
+}
+

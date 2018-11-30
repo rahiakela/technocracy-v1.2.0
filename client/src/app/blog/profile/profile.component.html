@@ -1,0 +1,21 @@
+<div class="card">
+  <div style="background-color: #007db8;">
+    <div class="card-block">
+      <h6 class="card-title">Author Profile</h6>
+      <app-profile-icon [user]="blog.profile.user"></app-profile-icon>
+      <div *ngIf="getCurrentUser() !== null && getCurrentUser()._id !== blog.profile.user._id" style="margin-top: -7em;">
+        <a href="#" title="Follow"><i class="fa fa-user-plus pull-right" style="color: white;" aria-hidden="true"></i></a>
+      </div>
+      <div id="profile">
+        <h5 class="card-title">{{blog.profile.name}},{{blog.profile.city}},{{blog.profile.country}}</h5><br>
+        <h6 class="tech-member-date">Member since {{blog.profile.joinedOn | fromNow }}</h6>
+        <h6 class="tech-profile-tag">{{showSkillsHashTag(blog.profile.skills)}}</h6>
+      </div>
+      <div id="profile-description">
+        <p class="card-text">
+          {{blog.profile.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

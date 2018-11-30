@@ -1,0 +1,31 @@
+<div class="jumbotron" *ngIf="!unsubscribed">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Enter your Email to unsubscribe</h4>
+      </div>
+    </div>
+
+    <form name="unsubscribeForm" role="form" novalidate>
+      <div class="form-group has-feedback has-feedback-left">
+        <input class="form-control" type="text" name="email" [(ngModel)]="user.email" placeholder="Enter your email here" required autofocus>
+        <i id="email-icon" class="fa fa-at form-control-feedback"></i>
+      </div>
+      <button type="button" class="btn btn-block btn-primary" (click)="unsubscribe(user)">Un-subscribe</button>
+    </form>
+
+  </div>
+</div>
+
+<div class="jumbotron" *ngIf="unsubscribed">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p>You have un-subscribed successfully from Technocracy Blog Community.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,165 @@
+<div *ngIf="currentUser !== null; else blogListView">
+  <div  *ngIf="currentUser.profile !== undefined; else userView" class="image-flip" ontouchstart="this.classList.toggle('hover');">
+    <div class="mainflip">
+      <div class="frontside">
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="profile-image-icon"><app-profile-icon [user]="currentUser"></app-profile-icon></div>
+            <h4 id="profile-title">{{currentUser?.profile?.name}}</h4>
+            <p *ngIf="currentUser.profile !== undefined" id="profile-designation">{{currentUser?.profile?.designation}} @ {{currentUser?.profile?.company}}</p>
+            <p *ngIf="currentUser.profile !== undefined" id="profile-location">{{currentUser?.profile?.address}}, {{currentUser?.profile?.city}}, {{currentUser?.profile?.country}} <span class="fa fa-circle"></span> member since {{currentUser?.profile?.joinedOn | fromNow }}</p>
+            <p *ngIf="currentUser.profile !== undefined" id="profile-skills" class="card-text">{{ currentUser.profile !== undefined ? showSkills(currentUser.profile.skills) : ''}}</p>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="currentUser.profile !== undefined" class="backside">
+        <div class="card">
+          <div class="card-body text-center mt-4">
+            <p class="card-text" style="font-size: 13px;">{{currentUser?.profile?.description}}</p>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a class="social-icon text-xs-center" target="_blank" href="#">
+                  <i class="fa fa-facebook" style="color: #3b5998;"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="social-icon text-xs-center" target="_blank" href="#">
+                  <i class="fa fa-twitter" style="color: #00aced;"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="social-icon text-xs-center" target="_blank" href="#">
+                  <i class="fa fa-linkedin" style="color: #007bb6;"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="social-icon text-xs-center" target="_blank" href="#">
+                  <i class="fa fa-google" style="color: #dd4b39;"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #userView>
+    <div class="mainflip">
+      <div class="frontside">
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="profile-image-icon"><app-profile-icon [user]="currentUser"></app-profile-icon></div>
+            <h4>{{ getUserName(currentUser)}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+  <div class="card" id="side-menu" style="top: -30px;">
+    <ul class="nav nav-pills nav-stacked">
+
+      <li>
+        <a routerLink="/profile" class="transition" (click)="$event.stopPropagation();">
+          <span style="margin-right: 0.2rem;" class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          My Profile
+        </a>
+      </li>
+
+      <li class="nav-divider"></li>
+      <li *ngIf="currentUser.role === 'admin' || currentUser.role === 'author'" (click)="$event.stopPropagation();">
+        <a routerLink="/blog/write/new" class="transition" style="margin-bottom: -10px;">
+          <span style="margin-top: 3px;" class="fa fa-edit pull-left transition" aria-hidden="true"></span>
+          Write Blog
+        </a>
+      </li>
+      <li *ngIf="currentUser.role === 'admin' || currentUser.role === 'author'" (click)="$event.stopPropagation();">
+        <a [routerLink]="['./blog/b_show', currentUser.profile._id]" class="transition">
+          <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-file-text-o pull-left" aria-hidden="true"></i>
+          My Blog
+          <span class="badge pull-right">{{statics.totalBlog < 0 ? 0 : statics.totalBlog}}</span>
+        </a>
+      </li>
+
+      <li class="nav-divider"></li>
+      <li>
+        <a routerLink="./question/ask/new" class="transition" style="margin-bottom: -10px;" (click)="$event.stopPropagation();">
+          <span style="margin-top: 3px;" class="glyphicon glyphicon-pencil pull-left transition" aria-hidden="true"></span>
+          Ask Question
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['./question/q_show', 'published']" class="transition" style="margin-bottom: 2px;" (click)="$event.stopPropagation();">
+          <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-question-circle pull-left" aria-hidden="true"></i>
+          My Question
+          <span class="badge pull-right">{{statics.totalQuestion < 0 ? 0 : statics.totalQuestion}}</span>
+        </a>
+      </li>
+
+      <li *ngIf="currentUser.role === 'admin'" class="nav-divider" style="margin-top: -2px;"></li>
+      <li *ngIf="currentUser.role === 'admin'">
+        <a routerLink="./blog/show/all/pending" class="transition" style="margin-bottom: -10px;" (click)="$event.stopPropagation();">
+          <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-file-text-o pull-left" aria-hidden="true"></i>
+          Pending Blogs
+          <span class="badge pull-right">{{statics.totalPendingBlog < 0 ? 0 : statics.totalPendingBlog}}</span>
+        </a>
+      </li>
+      <li *ngIf="currentUser.role === 'admin'">
+        <a routerLink="./question/show/all/pending" class="transition" (click)="$event.stopPropagation();">
+          <i style="margin-top: 3px;margin-right: 1rem;" class="fa fa-question-circle pull-left" aria-hidden="true"></i>
+          Pending Questions
+          <span class="badge pull-right">{{statics.totalPendingQuestion < 0 ? 0 : statics.totalPendingQuestion}}</span>
+        </a>
+      </li>
+
+      <li class="nav-divider"></li>
+      <li>
+        <a routerLink="/profile/followers" class="transition" style="margin-bottom: -10px;" (click)="$event.stopPropagation();">
+          <i class="fa fa-group" style="margin-right: 0.4rem;" aria-hidden="true"></i>
+          Followers
+          <span class="badge pull-right">{{statics.totalFollowers < 0 ? 0 : statics.totalFollowers}}</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/profile/following" class="transition" (click)="$event.stopPropagation();">
+          <i class="fa fa-group" style="margin-right: 0.4rem;" aria-hidden="true"></i>
+          Following
+          <span class="badge pull-right">{{statics.totalFollowing < 0 ? 0 : statics.totalFollowing}}</span>
+        </a>
+      </li>
+
+      <li class="nav-divider"></li>
+      <li>
+        <a routerLink="/profile/settings" class="transition" (click)="$event.stopPropagation();">
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+          Settings
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<ng-template #blogListView>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-info">
+      Latest Blog
+    </li>
+    <li class="list-group-item" *ngFor="let blog of blogList">
+      <a [routerLink]="['/blog', blog._id]" (click)="$event.stopPropagation();">
+        <div>
+          <h6 class="mb-1">
+            <i class="fa fa-file-text"></i>
+            {{blog.title}}
+          </h6>
+        </div>
+      </a>
+      <small>{{blog.publishedOn | fromNow }}</small>
+    </li>
+  </ul>
+</ng-template>
+
+
+

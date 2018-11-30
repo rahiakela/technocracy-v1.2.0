@@ -1,0 +1,87 @@
+@import "../../../styles.css";
+
+/*profile image upload styling: ref - https://codepen.io/shantikumarsingh/pen/RRmWxo*/
+.profile-image-upload {
+  margin-top: 1.5em;
+  margin-left: 2em;
+}
+.profile-pic {
+  max-width: 200px;
+  max-height: 200px;
+  display: block;
+}
+.file-upload {
+  display: none;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+input.file-upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.circle {
+  /*border-radius: 1000px !important;*/
+  overflow: hidden;
+  /* width: 128px; */
+  /* height: 128px; */
+  border: 7px solid rgba(180, 176, 176, 0.7);
+  top: 72px;
+  /*position: absolute;*/
+  top: 72px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.p-image {
+  /*position: absolute;*/
+  background-color: #f4f5f7;
+  /*margin-top: -2em;*/
+  font-size: 17px;
+  top: 167px;
+  right: 30px;
+  color: #bbb8b8;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+  margin-top: 0.1em;
+}
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+.profile-description{
+  color: #4ca7d2;
+  font-size: 13px;
+}
+div>h6>strong{
+  color: #007db8;
+}
+div>h3>strong{
+  color: #007db8;
+}
+p>a{
+  text-decoration-style: dashed;
+  color: #092946;
+  text-decoration: underline;
+}
+div>h6>a{
+  text-decoration-style: dashed;
+  color: #092946;
+  text-decoration: underline;
+}

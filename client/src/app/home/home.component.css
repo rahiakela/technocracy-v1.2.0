@@ -1,0 +1,50 @@
+@import "../../styles.css";
+
+h4 {
+  font-weight: inherit;
+}
+strong {
+  color: #989a70;
+}
+small#designation {
+  color: darkseagreen;
+}
+small#skills {
+  color: #7d7cab;
+  font-size: 11px;
+}
+hr{
+  margin-top: 0;
+  margin-bottom: 0.25em;
+}
+
+div#tech-inline-icon-box{
+  padding-bottom: 1em;
+  margin-left: 0em;
+  margin-top: 1rem;
+}
+
+div.tech-inline-profile-box{
+  margin-left: 6em;
+  margin-top: -5em;
+  font-size: 13px;
+}
+
+.tech-inline-share-box{
+  padding-left: 0em;
+}
+@media(max-width: 34em) {
+  .tech-inline-share-box {
+    padding-left: 0em;
+  }
+}
+
+.tech-load-more-button {
+  margin-left: 250px;
+  background-color: #f7f7f9;
+}
+
+.tech-load-more-button:hover{
+  background-color: #d7dadb;
+}
+

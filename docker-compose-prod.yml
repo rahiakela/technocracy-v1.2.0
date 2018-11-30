@@ -1,0 +1,23 @@
+version: '3.3' #specify docker-compose version
+
+# Define the services/containers to be run
+services:
+  technocracy-database: # name of the mongodb database service
+    image: mongo # specify image to build container from
+    ports:
+      - "27017:27017" # specify port forwarding
+    container_name: "technocracy-database" # specify container name
+  technocracy-client: # name of the front-end client service
+    image: rahiakela/technocracy:technocracy-client-1.0.0.0 # specify docker hub image to build container from
+    ports:
+      - "4200:4200" # specify port forwarding
+    container_name: "technocracy-client" # specify container name
+  technocracy-server: # name of the back-end server service
+    image: rahiakela/technocracy:technocracy-server-1.0.0.0 # specify docker hub image to build container from
+    ports:
+      - "3000:3000" # specify ports forwarding
+    container_name: "technocracy-server" # specify container name
+    depends_on:
+      - technocracy-database # make sure the server run after the database up
+    links:
+      - technocracy-database # link this service to the database service

@@ -1,0 +1,67 @@
+<div class="card">
+
+  <div class="row" style="margin: 5px 0px -15px 0px;">
+    <div class="col-md-12" *ngIf="message !== ''">
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{message}}
+      </div>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <div style="color: #007db8;">
+      <div>
+        <h4>{{blog.title}}</h4>
+      </div>
+      <div>
+        <app-profile-small-icon [user]="blog.profile.user"></app-profile-small-icon>
+        <div class="tech-inline-profile-box">
+          {{blog.profile.name}}<small>-{{blog.profile.designation}}@{{blog.profile.company}}</small><br>
+          <small *ngIf="blog.profile.skills !== undefined" id="skills">{{showSkillsHashTag(blog.profile.skills)}}</small>
+        </div>
+
+        <div class="tech-inline-share-box">
+          <app-share
+            [url]="'https://www.tecknocracy.com/#/blog/'+blog._id"
+            [title]="blog.title"
+          >
+          </app-share>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card-block">
+    <div [innerHTML]="blog.content | safeHtml"></div>
+
+    <!--Blogger's Profile and skills-->
+    <app-profile [blog]="blog"></app-profile>
+
+  </div>
+
+  <!--Like and Comments section-->
+  <div class="card-footer">
+
+    <span class="tech-inline-like-comment-box">
+      <button type="button" class="btn tech-like-comment-btn" title="Like this blog">
+        <i class="fa fa-thumbs-up fa-1x" style="color: #025aa5;"></i> Like
+      </button>
+      <button type="button" class="btn tech-like-comment-btn" title="Comment on this blog">
+        <i class="fa fa-commenting fa-1x" style="color: #025aa5;"></i> Comment
+      </button>
+    </span>
+
+    <div *ngIf="blog.status === 'draft'" class="pull-right" style="margin-top: -5px;margin-right: 10px;">
+      <button type="button" class="btn btn-primary" (click)="modifyBlog(blog._id)">Post Your Blog</button>
+    </div>
+    <div class="pull-right" style="margin-top: -5px;margin-right: 10px;">
+      <button routerLink="./{{blog._id}}/dpp_view" type="button" class="btn btn-primary">Edit Your Blog</button>
+    </div>
+  </div>
+
+</div>
+

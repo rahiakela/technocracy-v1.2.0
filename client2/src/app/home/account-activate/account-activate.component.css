@@ -1,0 +1,12 @@
+
+.jumbotron p {
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+
+.fa.form-control-feedback {
+  line-height: 34px;
+  float: left;
+  margin-top: 0px;
+  margin-left: 1px;
+}

@@ -1,0 +1,197 @@
+@import "../../../../styles.css";
+
+#tech-left-sidebar .list-group .label {
+  padding: 0.3rem 0.6rem;
+}
+.list-group-item-info {
+  color: #e5eaec;
+  background-color: #007db8;
+}
+div h6 {
+  font-weight: 600;
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+ul li small {
+  font-size: 10px;
+  color: #007db8;
+}
+
+/*side-menu profile styling*/
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+  border-radius: .25rem;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+.mainflip {
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -moz-transform: perspective(1000px);
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.frontside {
+  position: relative;
+  -webkit-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+h4#profile-title {
+  color: #007db8;
+  margin-top: -5px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 16px;
+}
+p#profile-designation {
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #007db8;
+}
+p#profile-location {
+  margin-bottom: 2px;
+  font-size: 9px;
+  font-weight: bold;
+  color: #007db8;
+}
+p.card-text {
+  margin-bottom: 2px;
+  font-size: 13px;
+  font-size: 9px;
+  font-weight: bold;
+  color: #7d7cab;
+}
+
+.backside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+  box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+.frontside,
+.backside {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: 1s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: 1s;
+  -moz-transform-style: preserve-3d;
+  -o-transition: 1s;
+  -o-transform-style: preserve-3d;
+  -ms-transition: 1s;
+  -ms-transform-style: preserve-3d;
+  transition: 1s;
+  transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+  /*min-height: 312px;*/
+}
+
+.backside .card a {
+  font-size: 18px;
+  color: #007b5e !important;
+}
+
+.frontside .card .card-title,
+.backside .card .card-title {
+  color: #007b5e !important;
+}
+
+.frontside .card .card-body img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+
+.profile-image-icon {
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
+/*left-side menu styling*/
+ #side-menu ul.nav {
+   margin-top: 0rem;
+ }
+#side-menu ul.nav a {
+  color: #007db8;
+}
+
+#side-menu ul.nav a:hover,
+#side-menu ul.nav a:focus {
+  color: #FFF;
+  background-color: #a1a8b5;
+}
+#side-menu ul.nav a .glyphicon {
+  margin-right: 0.7rem;
+}
+#side-menu ul.nav a .glyphicon.pull-right {
+  margin-top: 0.2rem;
+  will-change: transform;
+}
+#side-menu ul.nav a .badge {
+  background-color: #007db8;
+}
+#side-menu ul.nav .nav-divider {
+  background-color: #eff1f5;
+  margin: 0 0 0 0;
+}
+#side-menu ul.nav ul {
+  margin-left: 0%;
+}
+#side-menu .nav-stacked > li + li {
+  margin-top: 0px;
+}
+#side-menu ul.nav ul a {
+  display: block;
+  background-color: #eff1f5;
+  padding: 1rem;
+  margin-bottom: 0.3rem;
+  border-radius: 0.25em;
+}
+#side-menu ul.nav ul a:hover {
+  text-decoration: none;
+  background-color: #a1a8b5;
+}
+#side-menu ul.nav a:focus .glyphicon.pull-right {
+  -moz-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}

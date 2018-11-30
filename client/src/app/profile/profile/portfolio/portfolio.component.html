@@ -1,0 +1,133 @@
+<link rel="stylesheet" href="../employment/employment.component.css">
+<div class="card">
+<div class="row">
+  <div class="col-md-6">
+    <h4 align="center">Portfolio Snapshot</h4>
+  </div>
+</div>
+<hr>
+
+<form name="portfolioForm" role="form" novalidate>
+
+  <div class="form-group row">
+    <label id="name-label" class="col-md-2 col-form-label pull-left" for="name">Name</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+    </div>
+    <label id="dob-label" class="col-md-2 col-form-label pull-left" for="dob">DOB</label>
+    <div class="col-md-4">
+      <input type="date" class="form-control" id="dob" name="dob">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="gender">Gender</label>
+    <div class="col-md-4 pull-left">
+      <select class="form-control" id="gender" name="gender">
+        <option value="">Select your gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <label class="col-md-2 col-form-label" for="phone" id="phone-label">Phone</label>
+    <div class="col-md-4 pull-left">
+      <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="email">Email</label>
+    <div class="col-md-4 pull-left">
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
+    </div>
+    <label class="col-md-2 col-form-label" for="mobile">Mobile</label>
+    <div class="col-md-4 pull-left">
+      <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number">
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="description">About You</label>
+    <div class="col-md-10 pull-left form-right-aligned">
+      <textarea name="description" id="description" placeholder="Please describe yourself..." rows="2" cols="51"></textarea>
+    </div>
+  </div>
+
+  <hr>
+  <h5>Social Presence</h5>
+  <hr>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="facebook">Facebook</label>
+    <div class="col-md-4 pull-left">
+      <input type="url" class="form-control" id="facebook" name="facebook" placeholder="Enter your Facebook profile link">
+    </div>
+    <label class="col-md-2 col-form-label" for="google">Google</label>
+    <div class="col-md-4 pull-left">
+      <input type="url" class="form-control" id="google" name="google" placeholder="Enter your Google profile link">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="twitter">Twitter</label>
+    <div class="col-md-4 pull-left">
+      <input type="url" class="form-control" id="twitter" name="twitter" placeholder="Enter your Twitter profile link">
+    </div>
+    <label class="col-md-2 col-form-label" for="linkedIn">LinkedIn</label>
+    <div class="col-md-4 pull-left">
+      <input type="url" class="form-control" id="linkedIn" name="linkedIn" placeholder="Enter your LinkedIn profile link">
+    </div>
+  </div>
+
+  <hr>
+  <h5>Location Info</h5>
+  <hr>
+
+  <div class="form-group row">
+    <label class="col-md-2 col-form-label" for="address">Address</label>
+    <div class="col-md-10 pull-left form-right-aligned">
+      <input type="text" class="form-control" id="address" name="address" placeholder="Enter your address">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-md-6">
+      <fieldset>
+        <legend>Country</legend>
+        <select class="form-control select-control" id="country" name="country">
+          <option value="">Select your country</option>
+          <option value="india">India</option>
+          <option value="us">US</option>
+        </select>
+      </fieldset>
+    </div>
+
+
+    <div class="col-md-6">
+      <fieldset>
+        <legend>City</legend>
+        <select class="form-control select-control" id="city" name="city">
+          <option value="">Select your city</option>
+          <option value="New Delhi">New Delhi</option>
+          <option value="Noida">Noida</option>
+        </select>
+      </fieldset>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <div class="form-group row">
+    <div class="col-md-2 col-md-offset-4" style="padding-right: 0em;">
+      <button type="button" class="btn btn-block btn-primary">Save</button>
+    </div>
+    <div class="col-md-2" style="padding-left: 0.1em;">
+      <button type="button" class="btn btn-block btn-secondary">Cancel</button>
+    </div>
+
+  </div>
+</form>
+</div>

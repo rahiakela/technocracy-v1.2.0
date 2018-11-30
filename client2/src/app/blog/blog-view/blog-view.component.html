@@ -1,0 +1,249 @@
+<div class="card">
+
+  <div class="card-header">
+    <div style="color: #007db8;">
+      <div>
+        <h4>{{blog.title}}</h4>
+      </div>
+      <div>
+        <app-profile-small-icon [user]="blog.profile.user"></app-profile-small-icon>
+        <div class="tech-inline-profile-box">
+          {{blog.profile.name}}<small>-{{blog.profile.designation}}@{{blog.profile.company}}</small><br>
+          <small id="skills">{{showSkillsHashTag(blog.profile.skills)}}</small>
+        </div>
+
+        <div class="tech-inline-share-box">
+          <app-share
+            [url]="'https://www.tecknocracy.com/#/blog/'+blog._id"
+            [title]="blog.title"
+          >
+          </app-share>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="card-block">
+    <!--Google's Adsense-->
+    <app-google-adsense></app-google-adsense>
+
+    <!--Blog's content-->
+    <div [innerHTML]="blog.content | safeHtml"></div>
+
+    <!--Google's Adsense-->
+    <app-google-adsense></app-google-adsense>
+
+    <!--Blogger's Profile and skills-->
+    <app-profile [blog]="blog"></app-profile>
+  </div>
+
+  <!--Like and Comments section-->
+  <div class="card-footer">
+    <span class="tech-inline-like-comment-box">
+      <button type="button" class="btn tech-like-comment-btn" title="Like this blog" (click)="isUserLoggedIn('') > 0 ? likeBlog(): showLoginSignup()">
+        <i class="fa fa-thumbs-up fa-1x" style="color: #025aa5;"></i> Like
+      </button>
+      <button type="button" class="btn tech-like-comment-btn" title="Comment on this blog" (click)="isUserLoggedIn('') > 0 ? modalCommentEditor.show(): showLoginSignup();clearErrorMessage()">
+        <i class="fa fa-commenting fa-1x" style="color: #025aa5;"></i> Comment
+      </button>
+    </span>
+
+    <div class="pull-right" style="margin-top: 5px;margin-right: 10px;">
+      <span style="color: #025aa5;font-size: 13px;" *ngIf="totalLikes > 0">{{totalLikes}} likes</span>
+      <span style="color: #025aa5;font-size: 13px;" *ngIf="totalComments > 0">{{totalComments}} comments</span>
+    </div>
+  </div>
+
+  <!--Blog comment section-->
+  <div class="container" *ngIf="comments.length > 0">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="card comments-box">
+          <ul id="comments-list" class="comments-list">
+            <li>
+              <div class="comment-main-level" *ngFor="let comment of comments">
+                <!-- user icon -->
+                <app-comment-icon [user]="comment.commentedBy"></app-comment-icon>
+                <!-- iterating commentList -->
+                <div class="comment-box">
+                  <div class="comment-head">
+
+                    <h6 *ngIf="blog.profile.name == getUserName(comment.commentedBy)" class="comment-name by-author"><a href="#">{{getUserName(comment.commentedBy)}}</a></h6>
+                    <h6 *ngIf="blog.profile.name != getUserName(comment.commentedBy)" class="comment-name"><a href="#">{{getUserName(comment.commentedBy)}}</a></h6>
+                    <span class="comment-pretty-time">commented {{comment.commentedOn | fromNow }}</span>
+
+                    <div class="comment-like-btn-group">
+                      <button type="button" class="btn btn-link" id="comments-like-comment-btn" (click)="isUserLoggedIn(comment._id) > 0 ? modalCommentEditor.show(): showLoginSignup();clearErrorMessage()">
+                        <i class="fa fa-reply" style="color: #025aa5;" title="Replay to this comment"></i>
+                      </button>
+                      <button type="button" class="btn btn-link" style="padding-left: 0em;" (click)="isUserLoggedIn(comment._id) > 0 ? likeComment(comment._id): showLoginSignup()">
+                        <i id="{{comment._id}}" class="fa fa-heart" style="color: #025aa5;" title="Like this comment">{{comment.likes.length || 0}}</i>
+                      </button>
+                      <div *ngIf="getCurrentUser().length > 0">
+                        <div id="question-comment-crud-option" *ngIf="getCurrentUser() === getCurrentUserId(comment.commentedBy)" style="margin-bottom: -1.5em;">
+                          <a (click)="modalCommentConfirm.show()" title="Delete your comment"><i class="fa fa-trash pull-right" aria-hidden="true" style="color: #007db8;"></i></a>
+                          <a (click)="modalUpdateCommentEditor.show();getCommentReplyContentToUpdate(comment, 'comment');" title="Edit your comment"><i class="fa fa-pencil pull-right" aria-hidden="true" style="color: #007db8;"></i></a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="comment-content" [innerHTML]="comment.content | safeHtml"></div>
+
+                  <!--Comment delete confirm dialog box-->
+                  <app-confirm-modal #modalCommentConfirm>
+                    <div class="app-modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalCommentConfirm.hide()"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" style="color: #007db8;">Deletion Confirmation</h4>
+                    </div>
+
+                    <div class="app-modal-body">
+                      <h5 style="color: #007db8;">Are you sure want to delete your comment?</h5>
+                    </div>
+
+                    <div class="app-modal-footer">
+                      <button type="button" class="btn btn-default" (click)="deleteCommentAndReply(comment._id,'comment')" style="color: #007db8;">Yes</button>
+                      <button type="button" class="btn btn-primary" (click)="modalCommentConfirm.hide()">No</button>
+                    </div>
+                  </app-confirm-modal>
+
+                </div>
+
+                <!-- iterating reply of comments -->
+                <ul class="comments-list reply-list">
+                  <li *ngFor="let reply of comment.replies">
+                    <!-- user icon -->
+                    <app-reply-icon [user]="reply.repliedBy"></app-reply-icon>
+                    <div class="comment-box">
+                      <div class="comment-head">
+
+                        <h6 *ngIf="blog.profile.name == getUserName(reply.repliedBy)" class="comment-name by-author"><a href="#">{{getUserName(reply.repliedBy)}}</a></h6>
+                        <h6 *ngIf="blog.profile.name != getUserName(reply.repliedBy)" class="comment-name"><a href="#">{{getUserName(reply.repliedBy)}}</a></h6>
+                        <span>replied {{ reply.repliedOn | fromNow }}</span>
+
+                        <div class="reply-like-btn-group">
+                          <button type="button" class="btn btn-link" id="reply-like-comment-btn" style="padding-left: 0px;padding-bottom: 0px; padding-top: 9px;"
+                                  (click)="isUserLoggedIn(comment._id) > 0 ? likeReply(comment._id, reply._id): showLoginSignup()">
+                            <i id="{{reply._id}}" class="fa fa-heart" style="color: #025aa5;" title="Like this reply">{{reply.likes.length || 0}}</i>
+                          </button>
+
+                          <div *ngIf="getCurrentUser().length > 0">
+                            <div id="question-reply-crud-option" *ngIf="getCurrentUser() === getCurrentUserId(reply.repliedBy)" style="margin-top: -1.25em;">
+                              <a (click)="modalReplyConfirm.show()" title="Delete your reply"><i class="fa fa-trash pull-right" aria-hidden="true" style="color: #007db8;"></i></a>
+                              <a (click)="modalUpdateCommentEditor.show();getCommentReplyContentToUpdate(reply, 'reply');" title="Edit your reply"><i class="fa fa-pencil pull-right" aria-hidden="true" style="color: #007db8;"></i></a>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="comment-content" [innerHTML]="reply.content | safeHtml"></div>
+
+                      <!--Reply delete confirm dialog box-->
+                      <app-confirm-modal #modalReplyConfirm>
+                        <div class="app-modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modalReplyConfirm.hide()"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" style="color: #007db8;">Deletion Confirmation</h4>
+                        </div>
+
+                        <div class="app-modal-body">
+                          <h5 style="color: #007db8;">Are you sure want to delete your reply?</h5>
+                        </div>
+
+                        <div class="app-modal-footer">
+                          <button type="button" class="btn btn-default" (click)="deleteCommentAndReply(reply._id, 'reply')" style="color: #007db8;">Yes</button>
+                          <button type="button" class="btn btn-primary" (click)="modalReplyConfirm.hide()">No</button>
+                        </div>
+                      </app-confirm-modal>
+
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-editor-modal #modalCommentEditor>
+
+  <div class="app-modal-header">
+    <h4 class="text-center" style="margin-bottom: 0em;"><i class="fa fa-pencil-square-o"></i> Write Comment</h4>
+  </div>
+
+  <div class="app-modal-body">
+
+    <div *ngIf="errorMessage != ''">
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    </div>
+
+    <form class="form-horizontal" name="commentForm" novalidate>
+      <div class="form-group">
+        <div class="col-sm-12 col-md-12">
+          <div class="card tech-comment-editor-box">
+            <app-tinymce-editor [elementId]="'my-editor'" [type]="'blog-comment'" (onEditorContentChange)="keyupHandler($event)"></app-tinymce-editor>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-12 col-md-12">
+          <input type="checkbox" name="sendNotification" [(ngModel)]="notification" style="margin-left: 0.25em;"/>Send me notification when anyone comments
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-8 col-md-6">
+          <div class="g-recaptcha" style="margin-left: 0.3em;transform:scale(0.63);-webkit-transform:scale(0.63);transform-origin:0 0;-webkit-transform-origin:0 0;">
+            <re-captcha (resolved)="resolved($event)"></re-captcha>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-6">
+          <button type="button" id="blog-re-captcha-comment" disabled class="btn btn-primary tech-add-comment-button" (click)="addComment(notification)">Add comment</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</app-editor-modal>
+
+<!--Update Comment Editor dialog box-->
+<app-editor-modal #modalUpdateCommentEditor>
+  <div class="app-modal-header">
+    <h4 class="text-center" style="margin-bottom: 0em;"><i class="fa fa-pencil-square-o"></i> Edit Comment</h4>
+  </div>
+
+  <div class="app-modal-body">
+
+    <div *ngIf="errorMessage != ''">
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    </div>
+
+    <form class="form-horizontal" name="commentForm" novalidate>
+      <div class="form-group" style="margin-bottom: 0em;">
+        <div class="col-sm-12 col-md-12">
+          <div class="card tech-comment-editor-box">
+            <textarea id="comment-update-editor" autofocus="autofocus">{{contentToUpdate}}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-6 col-md-6" style="margin-bottom: 15px;">
+          <button type="button" class="btn btn-primary tech-add-comment-button" (click)="editCommentReply();modalUpdateCommentEditor.hide();">Edit comment</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</app-editor-modal>

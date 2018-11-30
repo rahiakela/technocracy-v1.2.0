@@ -1,0 +1,43 @@
+<div class="jumbotron" *ngIf="!subscribed">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Subscribe for Technocracy Blog Community!</h4>
+
+        <p>Get our roundup of technical blogs and questionnaires and these technical happenings delivered to your inbox once you subscribed.</p>
+      </div>
+    </div>
+
+    <form name="subscribeForm" role="form" novalidate>
+      <div class="form-group has-feedback has-feedback-left">
+        <input class="form-control" type="text" name="email" [(ngModel)]="user.email" placeholder="Enter your email here" required autofocus>
+        <i id="email-icon" class="fa fa-at form-control-feedback"></i>
+      </div>
+      <button type="button" class="btn btn-block btn-primary" (click)="subscribe(user)">Subscribe</button>
+    </form>
+
+  </div>
+</div>
+
+<div class="jumbotron" *ngIf="subscribed">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h5>Thanks for subscribing Technocracy Blog Community!</h5>
+
+        <p>Keep an eye on your email for the next blog.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tech-inline-share-box text-center">
+          <app-share [url]="'https://www.tecknocracy.com'"></app-share>
+        </div>
+
+        <p class="text-center">Spread the word</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+

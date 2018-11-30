@@ -1,0 +1,257 @@
+@import "../../home/home.component.css";
+
+.navbar-brand img {
+  margin-top: -16px;
+  height: 50px;
+}
+
+.navbar-default {
+  background-color: #007db8;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #FFF;
+}
+div#left-menu {
+  float: left;
+  margin-left: 0.7em;
+}
+#nav-menu {
+  margin-right: 1rem;
+}
+.badge {
+  background-color: #007db8;
+}
+
+@media(min-width: 760px){
+  .dropdown-menu {
+    width: 22rem;
+    margin-left: 50em;
+    margin-top: 0em;
+  }
+}
+@media(min-width: 1020px){
+  .dropdown-menu {
+    width: 22rem;
+    margin-left: 70em;
+    margin-top: 0em;
+  }
+}
+@media(min-width: 1200px){
+  .dropdown-menu {
+    width: 22rem;
+    margin-left: 70em;
+    margin-top: 0em;
+  }
+}
+
+@media(min-width: 1350px){
+  .dropdown-menu {
+    width: 22rem;
+    margin-left: 72.5em;
+    margin-top: 0em;
+  }
+}
+
+@media(min-width: 1800px){
+  .dropdown-menu {
+    width: 22rem;
+    margin-left: 93em;
+    margin-top: 0em;
+  }
+}
+.dropdown-menu li a {
+  color: #007db8;
+}
+.dropdown-menu>li>a:hover{
+  background-color: #2e6da4;
+  color: white;
+}
+
+.navbar-default {
+  background-color: #007db8;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #FFF;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+  -ms-transition: all 150ms ease-in-out;
+  -o-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background-color: transparent;
+  color: #FFF;
+  padding-bottom: 0.62em;
+  border-bottom: 0.45em solid #FFF;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover {
+  background-color: transparent;
+  color: #F3F3F3;
+  padding-bottom: 0.62em;
+  border-bottom: 0.45em solid #F3F3F3;
+}
+
+@media(max-width: 34em) {
+  .navbar-default .navbar-nav > .active > a {
+    border-bottom: none;
+    border-left: 0.45em solid #FFF;
+    padding-left: 0.5em;
+  }
+}
+
+.navbar-header .navbar-toggle,
+.navbar-default .navbar-toggle:focus {
+  background-color: #57A5D2;
+}
+
+.navbar-default .navbar-toggle:hover {
+  background-color: #3986B3;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #FFF;
+}
+
+/*Search*/
+nav form#search {
+  padding: 0.5em;
+}
+nav form#search-xs {
+  padding: 0.5em;
+}
+nav form#search .glyphicon-search {
+  z-index: 99;
+  position: absolute;
+  right: 0.7em;
+  top: 50%;
+  margin-top: -0.44em;
+}
+nav form#search-xs .glyphicon-search {
+  z-index: 99;
+  position: absolute;
+  right: 0.7em;
+  top: 50%;
+  margin-top: -0.44em;
+}
+nav form#search .input-group .form-control {
+  border-radius: 1.25em;
+  width: 24em;
+}
+nav form#search-xs .input-group .form-control {
+  border-radius: 1.25em;
+  width: 24em;
+  margin-left: 1em;
+}
+@media(min-width: 48em){
+  nav form#search .input-group .form-control {
+    width: 28em;
+    margin-left: auto;
+  }
+}
+@media(min-width: 64em){
+  nav form#search .input-group .form-control {
+    width: 34em;
+    margin-left: 1em;
+  }
+}
+@media(min-width: 75em){
+  nav form#search .input-group .form-control {
+    width: 40em;
+    margin-left: 6.9em;
+  }
+}
+
+.input-group-btn :hover {
+  background-color: #fff;
+}
+
+/*globe icon*/
+.tech-btn-primary-globe-xs{
+  margin-right: 0.5em;
+  margin-top: 3px;
+  background-color: #007db8;
+  border-color: #007db8;
+  color: white;
+}
+#globe-xs{
+  background-color: #007db8;
+  border-color: #007db8;
+  color: white;
+}
+#globe-xs:hover{
+  background-color: #007db8;
+  border-color: #007db8;
+}
+
+button#main-menu {
+  margin-right: 2rem;
+}
+.tech-btn-primary-globe{
+  margin-top: -45px;
+  margin-right: 50px;
+  background-color: #007db8;
+  border-color: #007db8;
+  color: white;
+}
+#globe{
+  background-color: #007db8;
+  border-color: #007db8;
+  color: white;
+}
+#globe:hover{
+  background-color: #007db8;
+  border-color: #007db8;
+}
+
+/*Badge*/
+.navbar-nav .badge {
+  color: #2F92CA;
+  background-color: #FFF;
+  font-size: 0.7em;
+  padding: 0.27rem 0.55rem 0.2rem 0.4rem;
+  position: absolute;
+  left: 35.7rem;
+  top: 0.7rem;
+  z-index: 99;
+  border: 0.2rem solid #2F92CA;
+}
+.btn .badge {
+  position: relative;
+  top: -18px;
+  margin-right: -28px;
+  background-color: darkslategrey;
+}
+
+/*User icon*/
+.tech-btn-primary-user {
+  margin-top: -45px;
+  background-color: #007db8;
+  border-color: #007db8;
+  color: white;
+}
+#user{
+  color: white;
+  background-color: #007db8;
+  border-color: #007db8;
+}
+/*button.thumbnail {
+  margin: 0;
+  padding: 0;
+}
+#user img {
+  max-height: 2.3em;
+  border-radius: 0.3em;
+}*/
+
+
+

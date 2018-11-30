@@ -1,0 +1,52 @@
+<div class="card" style="min-height: 530px;color: #007db8;">
+
+  <div class="row">
+    <div class="col-md-12" *ngIf="successMessage !== ''">
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{successMessage}}
+      </div>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <h4>{{question.title}}</h4>
+  </div>
+
+  <div class="card-block">
+    <div [innerHTML]="question.content | safeHtml"></div>
+
+    <div class="card">
+      <div style="background-color: #007db8;">
+        <div class="card-block">
+          <div id="left-side">
+            <h6 class="tech-profile-tag">asked {{question.publishedOn | fromNow }}</h6>
+            <app-profile-small-icon [user]="question.askedBy"></app-profile-small-icon>
+          </div>
+          <div id="profile">
+            <h5>{{getUserName(question.askedBy)}}</h5>
+            <h6 class="tech-profile-tag">{{showSkillsHashTag(question.tags)}}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tech-inline-share-box">
+    <strong>may be someone can have better answer of this question?</strong><br>
+    <app-share
+      [url]="'https://www.tecknocracy.com/#/question/'+question._id"
+      [title]="question.title"
+    >
+    </app-share>
+  </div>
+
+  <div class="card-footer">
+    <div style="margin: -5px 13px 5px;">
+      <button type="button" class="btn btn-primary" (click)="modifyQuestion(question._id, 'published')">Publish Question</button>
+    </div>
+  </div>
+
+</div>

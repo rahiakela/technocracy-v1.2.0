@@ -1,0 +1,43 @@
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="10"
+  [infiniteScrollUpDistance]="10"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScrollDown()"
+  (scrolledUp)="onScrollUp()">
+
+  <div class="card" *ngFor="let blog of blogList">
+    <div class="card-header" style="height: 13rem;">
+      <a [routerLink]="['/blog', blog._id]" style="text-decoration: none;">
+        <div style="color: #007db8;">
+          <div>
+            <h4>{{blog.title}}</h4>
+          </div>
+          <div>
+            <app-profile-small-icon [user]="blog.profile.user"></app-profile-small-icon>
+            <div class="tech-inline-profile-box">
+              {{blog.profile.name}}<small>-{{blog.profile.designation}}@{{blog.profile.company}}</small><br>
+              <small id="skills">{{showSkillsHashTag(blog.profile.skills)}}</small>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="card-block">
+        <span>
+          <div [innerHTML]="blog.content.substring(0,300) | safeHtml"></div>
+          <a [routerLink]="['/blog', blog._id]" style="color: #007db8;">Continue reading→</a>
+        </span>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,24 @@
+@import "../blog-view/blog-view.component.css";
+
+div#profile {
+  margin-left: 6em;
+  margin-top: -6.5em;
+}
+div .card-block {
+  padding-bottom: 0.15em;
+}
+div#profile h5 {
+  margin-left: 0.10em;
+}
+div#profile-description {
+  margin-top: 1.25em;
+}
+.card-title{
+  color: #f7f7f9;
+  margin-bottom: 4px;
+}
+.tech-profile-tag{
+  color: #ccc;
+  overflow: auto;
+}
+

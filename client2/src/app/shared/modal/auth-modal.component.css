@@ -1,0 +1,13 @@
+@import "../../../styles.css";
+
+.custom-dialog-box{
+  margin-top: 6rem;
+  width: 16em;
+  opacity: 1;
+}
+@media(max-width: 43em)  {
+  .custom-dialog-box {
+    margin-top: 12rem;
+    margin-left: 7rem;
+  }
+}

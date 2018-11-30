@@ -1,0 +1,22 @@
+@import "../../../styles.css";
+
+.confirm-dialog-box{
+  margin-top: 10rem;
+  width: 20em;
+  opacity: 1;
+}
+@media(max-width: 34em) {
+  .confirm-dialog-box{
+    margin-top: 15rem;
+    width: 80%;
+    opacity: 1;
+    margin-left: 4rem;
+  }
+}
+
+button h4 {
+  color: #007db8;
+}
+div.app-modal-body h5 {
+  color: #007db8;
+}

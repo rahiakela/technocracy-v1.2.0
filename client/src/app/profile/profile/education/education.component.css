@@ -1,0 +1,24 @@
+.input-control{
+  margin-top: -1.4em;
+}
+.date-control{
+  margin-top: -1.4em;
+}
+.text-area-control{
+  margin-top: -1.1em;
+}
+.check-box-label{
+  color: #007db8;
+  font-size: 15px;
+}
+
+legend {
+  color: #007db8;
+  font-size: 10px;
+  font-weight: bold;
+}
+.check-box-label{
+  color: #007db8;
+  font-size: 15px;
+  margin-top: 1.5em;
+}

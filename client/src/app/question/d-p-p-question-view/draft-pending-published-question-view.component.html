@@ -1,0 +1,76 @@
+<div class="card">
+
+  <div class="row">
+    <div class="col-md-12" *ngIf="successMessage !== ''">
+      <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{successMessage}}
+      </div>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <h4>{{question.title}}</h4>
+  </div>
+
+  <div class="card-block">
+    <div [innerHTML]="question.content | safeHtml"></div>
+
+    <div class="card">
+      <div style="background-color: #007db8;">
+        <div class="card-block">
+          <div id="left-side">
+            <h6 class="tech-profile-tag">asked {{question.publishedOn | fromNow }}</h6>
+            <app-profile-small-icon [user]="question.askedBy"></app-profile-small-icon>
+          </div>
+          <div id="question-crud-option" *ngIf="getCurrentUser() === currentUserId">
+            <a title="Delete this question"><i class="fa fa-trash pull-right" aria-hidden="true"></i></a>
+            <a [routerLink]="[question._id]" title="Edit this question"><i class="fa fa-pencil pull-right" aria-hidden="true"></i></a>
+          </div>
+          <div id="profile">
+            <h5>{{getUserName(question.askedBy)}}</h5>
+            <h6 class="tech-profile-tag">{{showSkillsHashTag(question.tags)}}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tech-inline-share-box">
+    <strong>may be someone can have better answer of this question?</strong><br>
+    <app-share
+      [url]="'https://www.tecknocracy.com/#/question/'+question._id"
+      [title]="question.title"
+    >
+    </app-share>
+  </div>
+
+  <!--Like and Comments section-->
+  <div class="card-footer">
+    <div class="tech-inline-like-comment-box">
+        <button type="button" class="btn tech-like-comment-btn" style="margin-top: -5px;" title="Like this question">
+            <i class="fa fa-thumbs-up fa-1x" style="color: #025aa5;"></i> Like
+        </button>
+        <button type="button" class="btn tech-like-comment-btn" style="margin-top: -5px;" title="Comment on this question">
+            <i class="fa fa-commenting fa-1x" style="color: #025aa5;"></i> Comment
+        </button>
+        <button type="button" class="btn tech-like-comment-btn" style="margin-top: -5px;" title="Vote up on this question">
+            <i class="fa fa-chevron-up fa-1x" style="color: #025aa5;"></i> {{totalVoteUp}}
+        </button>
+        <button type="button" class="btn tech-like-comment-btn" style="margin-top: -5px;" title="Vote down on this question">
+            <i class="fa fa-chevron-down fa-1x" style="color: #025aa5;" ></i> {{totalVoteDown}}
+        </button>
+
+      <div *ngIf="question.status === 'draft'" class="pull-right" style="margin-top: -10px;margin-right: 10px;">
+        <button type="button" class="btn btn-primary" (click)="modifyQuestion(question._id, 'pending')">Post Your Question</button>
+      </div>
+      <div class="pull-right" style="margin-top: -10px;margin-right: 10px;">
+        <button type="button" class="btn btn-primary" routerLink="./{{question._id}}/dpp_view">Edit Your Question</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
